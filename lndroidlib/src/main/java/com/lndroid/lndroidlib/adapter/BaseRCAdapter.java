@@ -21,12 +21,14 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2016/2/19.
+ *
  */
 public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseRCHolder> {
 
     private static final int TYPE_ITEM = 1;    //item类型：子项
     private static final int TYPE_HEAD = 2;    //item类型：头
     private static final int TYPE_FOOTER = 3;    //item类型：尾部
+    private static final int aaaa=0;
 
     public static final int STATUS_ERROR = 4;    //加载更多状态
     public static final int STATUS_SUCCESS = 5;
