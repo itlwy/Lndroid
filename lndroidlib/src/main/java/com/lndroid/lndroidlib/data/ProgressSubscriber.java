@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.lndroid.lndroidlib.base.api.IBaseView;
+
 import rx.Subscriber;
 
 /**
@@ -26,6 +27,11 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     public ProgressSubscriber(Context context) {
         this.context = context;
         mProgressDialogHandler = new ProgressDialogHandler(context, this, true);
+    }
+
+    public ProgressSubscriber(Context context, String message) {
+        this.context = context;
+        mProgressDialogHandler = new ProgressDialogHandler(context, this, message, true);
     }
 
     public void showProgressDialog() {

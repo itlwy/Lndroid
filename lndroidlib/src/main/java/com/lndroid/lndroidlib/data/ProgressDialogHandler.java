@@ -20,10 +20,23 @@ public class ProgressDialogHandler extends Handler {
     private Context context;
     private boolean cancelable;
     private ProgressCancelListener mProgressCancelListener;
+    private String message;
 
     public ProgressDialogHandler(Context context, ProgressCancelListener mProgressCancelListener,
                                  boolean cancelable) {
         super();
+        setup(context,mProgressCancelListener,"数据处理中...请稍后",cancelable);
+    }
+
+    public ProgressDialogHandler(Context context, ProgressCancelListener mProgressCancelListener,String message,
+                                 boolean cancelable) {
+        super();
+        setup(context,mProgressCancelListener,message,cancelable);
+    }
+
+    public void setup(Context context, ProgressCancelListener mProgressCancelListener,String message,
+                      boolean cancelable){
+        this.message = message;
         this.context = context;
         this.mProgressCancelListener = mProgressCancelListener;
         this.cancelable = cancelable;
@@ -32,9 +45,8 @@ public class ProgressDialogHandler extends Handler {
     private void initProgressDialog(){
         if (pd == null) {
             pd = new ProgressDialog(context);
-
             pd.setCancelable(cancelable);
-
+            pd.setMessage(message);
             if (cancelable) {
                 pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
