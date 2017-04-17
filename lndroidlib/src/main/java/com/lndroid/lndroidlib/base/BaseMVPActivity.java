@@ -59,9 +59,9 @@ public abstract class BaseMVPActivity extends AppCompatActivity {
 
     public void hideToolbar(boolean flag) {
         if (flag) {
-            toolbar.setVisibility(View.VISIBLE);
-        } else {
             toolbar.setVisibility(View.GONE);
+        } else {
+            toolbar.setVisibility(View.VISIBLE);
         }
     }
 
