@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.lndroid.lndroidlib.R;
@@ -54,6 +55,14 @@ public abstract class BaseMVPActivity extends AppCompatActivity {
     public void setTitle(String title) {
         actionBar.setTitle(title);
 //        commTitleTv.setText(title);
+    }
+
+    public void hideToolbar(boolean flag) {
+        if (flag) {
+            toolbar.setVisibility(View.VISIBLE);
+        } else {
+            toolbar.setVisibility(View.GONE);
+        }
     }
 
     @Override
