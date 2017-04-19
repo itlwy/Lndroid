@@ -15,8 +15,13 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
 
     private IBaseView view;
     private ProgressDialogHandler mProgressDialogHandler;
+    private boolean isShowDialog = true;
 
     private Context context;
+
+    public void setShowDialog(boolean showDialog) {
+        isShowDialog = showDialog;
+    }
 
     public ProgressSubscriber(Context context, IBaseView view) {
         this.context = context;
@@ -35,13 +40,13 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     }
 
     public void showProgressDialog() {
-        if (mProgressDialogHandler != null) {
+        if (mProgressDialogHandler != null && isShowDialog) {
             mProgressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
         }
     }
 
     public void dismissProgressDialog() {
-        if (mProgressDialogHandler != null) {
+        if (mProgressDialogHandler != null  && isShowDialog) {
             mProgressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
             mProgressDialogHandler = null;
         }
