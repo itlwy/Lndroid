@@ -1,5 +1,6 @@
 package com.lndroid.lndroidlib.data;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -24,19 +25,25 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     }
 
     public ProgressSubscriber(Context context, IBaseView view) {
-        this.context = context;
-        this.view = view;
-        mProgressDialogHandler = new ProgressDialogHandler(context, this, true);
+        init(context, view, null, null);
     }
 
     public ProgressSubscriber(Context context) {
-        this.context = context;
-        mProgressDialogHandler = new ProgressDialogHandler(context, this, true);
+        init(context, null, null, null);
     }
 
     public ProgressSubscriber(Context context, String message) {
+        init(context, null, null, message);
+    }
+
+    public ProgressSubscriber(Context context, String message, Dialog dialog) {
+        init(context, null, dialog, message);
+    }
+
+    private void init(Context context, IBaseView view, Dialog dialog, String message) {
         this.context = context;
-        mProgressDialogHandler = new ProgressDialogHandler(context, this, message, true);
+        this.view = view;
+        mProgressDialogHandler = new ProgressDialogHandler(context, this, message, dialog, true);
     }
 
     public void showProgressDialog() {
@@ -46,7 +53,7 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     }
 
     public void dismissProgressDialog() {
-        if (mProgressDialogHandler != null  && isShowDialog) {
+        if (mProgressDialogHandler != null && isShowDialog) {
             mProgressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
             mProgressDialogHandler = null;
         }
