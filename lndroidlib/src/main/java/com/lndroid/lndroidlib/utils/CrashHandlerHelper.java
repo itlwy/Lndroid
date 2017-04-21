@@ -32,8 +32,10 @@ public class CrashHandlerHelper implements CrashListener {
             PackageManager pm = context.getPackageManager();
             ApplicationInfo ai = context.getApplicationInfo();
             String label = (String) pm.getApplicationLabel(ai);
-            log_dir = android.os.Environment
-                    .getExternalStorageDirectory().getAbsolutePath() + "/" + label+"/crash";
+            File dir = context.getExternalFilesDir("crash");
+            log_dir = dir.getAbsolutePath();
+//            log_dir = android.os.Environment
+//                    .getExternalStorageDirectory().getAbsolutePath() + "/" + label+"/crash";
         }
         return log_dir;
     }
@@ -43,7 +45,7 @@ public class CrashHandlerHelper implements CrashListener {
             Date nowtime = new Date();
             SimpleDateFormat logfile = new SimpleDateFormat("yyyy-MM-dd");// 日志文件格式
             String needWriteFiel = logfile.format(nowtime);
-            log_path = getLog_dir() + "/"+needWriteFiel+"_crash.log";
+            log_path = getLog_dir() + "/" + needWriteFiel + "_crash.log";
         }
         return log_path;
     }
