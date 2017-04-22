@@ -24,20 +24,16 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
         isShowDialog = showDialog;
     }
 
-    public ProgressSubscriber(Context context, IBaseView view) {
-        init(context, view, null, null);
+    public ProgressSubscriber(Context context, IBaseView view, String message) {
+        init(context, view, null, message);
     }
 
     public ProgressSubscriber(Context context) {
         init(context, null, null, null);
     }
 
-    public ProgressSubscriber(Context context, String message) {
-        init(context, null, null, message);
-    }
-
-    public ProgressSubscriber(Context context, String message, Dialog dialog) {
-        init(context, null, dialog, message);
+    public ProgressSubscriber(Context context, IBaseView view, Dialog dialog) {
+        init(context, view, dialog, null);
     }
 
     private void init(Context context, IBaseView view, Dialog dialog, String message) {
