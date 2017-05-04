@@ -73,13 +73,11 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
     @Override
     public void onError(Throwable e) {
         if (view != null) {
-            if (e instanceof HttpException) {
-                if (((HttpException) e).getResultCode() == HttpException.NO_DATA) {
-                    view.showEmptyView();
-                }
+            if (e instanceof HttpException && ((HttpException) e).getResultCode() == HttpException.NO_DATA) {
+                view.showEmptyView();
             } else {
 //                view.showErrorView(e.getMessage());
-                SnackbarUtil.IndefiniteSnackbar(view.getLayoutView(), "error:" + e.getMessage(), 5 * 1000
+                SnackbarUtil.IndefiniteSnackbar(view.getLayoutView(), "error:" + e.getMessage(), 10 * 1000
                         , SnackbarUtil.Warning).setAction("关闭", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

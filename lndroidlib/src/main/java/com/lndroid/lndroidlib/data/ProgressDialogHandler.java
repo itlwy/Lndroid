@@ -55,9 +55,9 @@ public class ProgressDialogHandler extends Handler {
                 });
             }
             mDialog = pd;
-            if (!mDialog.isShowing()) {
-                mDialog.show();
-            }
+        }
+        if (!mDialog.isShowing()) {
+            mDialog.show();
         }
     }
 
