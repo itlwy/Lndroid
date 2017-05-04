@@ -25,6 +25,23 @@ public class ProgressDialogHandler extends Handler {
     private String message;
     private String mDefaultMessage = "数据处理中...请稍后";
 
+    public Dialog getDialog() {
+        if (mDialog == null) {
+            ProgressDialog pd = new ProgressDialog(context);
+            pd.setCancelable(cancelable);
+            pd.setMessage(message);
+            if (cancelable) {
+                pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        mProgressCancelListener.onCancelProgress();
+                    }
+                });
+            }
+            mDialog = pd;
+        }
+        return mDialog;
+    }
 
     public ProgressDialogHandler(Context context, ProgressCancelListener mProgressCancelListener, String message,
                                  Dialog dialog, boolean cancelable) {
@@ -41,23 +58,9 @@ public class ProgressDialogHandler extends Handler {
         this.cancelable = cancelable;
     }
 
-    private void initProgressDialog() {
-        if (mDialog == null) {
-            ProgressDialog pd = new ProgressDialog(context);
-            pd.setCancelable(cancelable);
-            pd.setMessage(message);
-            if (cancelable) {
-                pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        mProgressCancelListener.onCancelProgress();
-                    }
-                });
-            }
-            mDialog = pd;
-        }
-        if (!mDialog.isShowing()) {
-            mDialog.show();
+    private void showProgressDialog() {
+        if (!getDialog().isShowing()) {
+            getDialog().show();
         }
     }
 
@@ -72,7 +75,7 @@ public class ProgressDialogHandler extends Handler {
     public void handleMessage(Message msg) {
         switch (msg.what) {
             case SHOW_PROGRESS_DIALOG:
-                initProgressDialog();
+                showProgressDialog();
                 break;
             case DISMISS_PROGRESS_DIALOG:
                 dismissProgressDialog();

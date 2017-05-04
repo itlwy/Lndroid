@@ -2,6 +2,7 @@ package com.lndroid.lndroidlib.data;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Toast;
 
@@ -42,6 +43,12 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
         this.context = context;
         this.view = view;
         mProgressDialogHandler = new ProgressDialogHandler(context, this, message, dialog, true);
+        mProgressDialogHandler.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                ProgressSubscriber.this.unsubscribe();
+            }
+        });
     }
 
     public void showProgressDialog() {
