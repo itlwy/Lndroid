@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import com.lndroid.lndroidlib.view.LoadingPage;
 
 public abstract class BaseMVPViewActivity extends AppCompatActivity {
 
-//    TextView commTitleTv;
+    //    TextView commTitleTv;
     Toolbar toolbar;
     FrameLayout baseContent;
     private ActionBar actionBar;
@@ -38,8 +39,8 @@ public abstract class BaseMVPViewActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
 //        toolbar.setTitleTextColor(Color.WHITE);
         //设置当前的控件可用
-        actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setHomeButtonEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         addContentView();
         initContent(savedInstanceState);
     }
@@ -98,6 +99,16 @@ public abstract class BaseMVPViewActivity extends AppCompatActivity {
     public void showSuccessView() {
         loadingPage.setState(LoadingPage.STATE_SUCCESS);
         loadingPage.showPage();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void killMyself() {
