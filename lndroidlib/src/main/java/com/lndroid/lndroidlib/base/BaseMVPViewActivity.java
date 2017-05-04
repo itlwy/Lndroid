@@ -70,6 +70,10 @@ public abstract class BaseMVPViewActivity extends AppCompatActivity {
         Toast.makeText(this, messaga, Toast.LENGTH_LONG).show();
     }
 
+    public View getLayoutView() {
+        return loadingPage;
+    }
+
     public void setTitle(String title) {
         actionBar.setTitle(title);
 //        commTitleTv.setText(title);

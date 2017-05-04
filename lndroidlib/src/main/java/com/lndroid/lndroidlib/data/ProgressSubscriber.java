@@ -2,9 +2,11 @@ package com.lndroid.lndroidlib.data;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.View;
 import android.widget.Toast;
 
 import com.lndroid.lndroidlib.base.api.IBaseView;
+import com.lndroid.lndroidlib.utils.SnackbarUtil;
 
 import rx.Subscriber;
 
@@ -76,7 +78,14 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
                     view.showEmptyView();
                 }
             } else {
-                view.showErrorView(e.getMessage());
+//                view.showErrorView(e.getMessage());
+                SnackbarUtil.IndefiniteSnackbar(view.getLayoutView(), "error:" + e.getMessage(), 5 * 1000
+                        , SnackbarUtil.Warning).setAction("关闭", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }).show();
             }
         } else {
             Toast.makeText(context, "error:" + e.getMessage(), Toast.LENGTH_SHORT).show();

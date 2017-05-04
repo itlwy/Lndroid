@@ -1,10 +1,10 @@
 package com.lndroid.lndroidlib.view;
 
 import android.content.Context;
+import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.lndroid.lndroidlib.R;
@@ -13,7 +13,7 @@ import com.lndroid.lndroidlib.R;
 /**
  * Created by Administrator on 2015/12/22.
  */
-public class LoadingPage extends FrameLayout {
+public class LoadingPage extends CoordinatorLayout {
     public static final int STATE_UNKOWN = 0;
     //    public static final int STATE_LOADING = 1;
     public static final int STATE_ERROR = 2;

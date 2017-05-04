@@ -103,6 +103,9 @@ public abstract class BaseMVPFragment extends Fragment {
         Toast.makeText(getActivity(), messaga, Toast.LENGTH_LONG).show();
     }
 
+    public View getLayoutView() {
+        return loadingPage;
+    }
 
     protected abstract void inits(Bundle savedInstanceState);
 
