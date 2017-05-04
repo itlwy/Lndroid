@@ -19,6 +19,7 @@ public class SnackbarUtil {
     public static final  int Confirm = 2;
     public static final  int Warning = 3;
     public static final  int Alert = 4;
+    public static final  int Default = 5;
 
 
     public static  int red = 0xfff44336;

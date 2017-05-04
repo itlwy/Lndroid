@@ -78,7 +78,7 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
             } else {
 //                view.showErrorView(e.getMessage());
                 SnackbarUtil.IndefiniteSnackbar(view.getLayoutView(), e.getMessage(), 10 * 1000
-                        , SnackbarUtil.Warning).setAction("关闭", new View.OnClickListener() {
+                        , SnackbarUtil.Default).setAction("关闭", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
