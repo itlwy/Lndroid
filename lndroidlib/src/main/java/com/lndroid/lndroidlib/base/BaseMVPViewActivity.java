@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lndroid.lndroidlib.R;
@@ -16,17 +17,21 @@ import com.lndroid.lndroidlib.view.LoadingPage;
 
 
 /**
- * Created by mac on 16/10/3.
+ * Created by itlwy on 16/10/3.
  */
 
 public abstract class BaseMVPViewActivity extends AppCompatActivity {
 
-    //    TextView commTitleTv;
+    TextView commTitleTv;
     Toolbar toolbar;
     FrameLayout baseContent;
     private ActionBar actionBar;
     private LoadingPage loadingPage;
     private View successView;
+
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,15 +39,26 @@ public abstract class BaseMVPViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         baseContent = (FrameLayout) findViewById(R.id.base_content);
-//        commTitleTv = (TextView) findViewById(R.id.comm_title_tv);
+        commTitleTv = (TextView) findViewById(R.id.title_tv);
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
-//        toolbar.setTitleTextColor(Color.WHITE);
         //设置当前的控件可用
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle("");  //  取消默认的title
+        toolbar.setNavigationIcon(R.mipmap.title_back);
         addContentView();
         initContent(savedInstanceState);
+    }
+
+    /**
+     * 设置标题字体颜色
+     *
+     * @param color
+     */
+    protected void setTitleTextColor(int color) {
+//        toolbar.setTitleTextColor(color);
+        commTitleTv.setTextColor(color);
     }
 
     private void addContentView() {
@@ -76,8 +92,8 @@ public abstract class BaseMVPViewActivity extends AppCompatActivity {
     }
 
     public void setTitle(String title) {
-        actionBar.setTitle(title);
-//        commTitleTv.setText(title);
+//        actionBar.setTitle(title);
+        commTitleTv.setText(title);
     }
 
 //    public void showLoadingView() {

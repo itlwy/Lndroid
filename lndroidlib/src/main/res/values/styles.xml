@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- toolbar菜单样式 -->
+    <style name="ToolbarTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="toolbarNavigationButtonStyle">@style/myToolbarNavigationButtonStyle</item>
+</style>
+
+    <style name="Theme.PopupMenu"
+           parent="@android:style/Widget.Holo.Light.ListPopupWindow">
+        <item name="android:popupBackground">@color/white</item>
+    </style>
+
+    <style name="myToolbarNavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">1dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+</resources>
