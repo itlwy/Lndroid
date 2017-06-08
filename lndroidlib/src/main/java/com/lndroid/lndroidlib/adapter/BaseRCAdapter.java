@@ -21,7 +21,6 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2016/2/19.
- *
  */
 public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseRCHolder> {
 
@@ -237,6 +236,26 @@ public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseRCHolder
                     System.out.println("setLoadMoreFinish");
                     mDatas.addAll(moreDatas);
                     notifyDataSetChanged();
+                    break;
+                }
+                case STATUS_FAILS: {
+                    loadMoreHolder.footerTV.setText("加载失败...");
+                    break;
+                }
+            }
+            this.statusCode = statusCode;
+        }
+    }
+
+    public void setLoadMoreFinish(boolean flag, int statusCode) {
+        if (isLoadMore) {
+            switch (statusCode) {
+                case STATUS_ERROR: {
+                    loadMoreHolder.footerTV.setText("加载错误...");
+                    break;
+                }
+                case STATUS_SUCCESS: {
+                    loadMoreHolder.footerTV.setText("加载成功...");
                     break;
                 }
                 case STATUS_FAILS: {
