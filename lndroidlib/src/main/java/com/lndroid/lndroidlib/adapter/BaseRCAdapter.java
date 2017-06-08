@@ -170,6 +170,9 @@ public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseRCHolder
                 return;
             pos = position - 1;
         }
+        if (TYPE_FOOTER == getItemViewType(position)) {
+            return;
+        }
         holder.bindDatas(mDatas.get(pos));
         if (itemClickListener != null) {
             holder.getContentView().setClickable(true);
