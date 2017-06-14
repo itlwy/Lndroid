@@ -23,6 +23,7 @@ public class SnackbarUtil {
 
 
     public static  int red = 0xfff44336;
+    public static  int black = 0xff000000;
     public static  int green = 0xff4caf50;
     public static  int blue = 0xff2195f3;
     public static  int orange = 0xffffc107;
@@ -122,6 +123,9 @@ public class SnackbarUtil {
                 break;
             case Alert:
                 setSnackbarColor(snackbar, Color.YELLOW,red);
+                break;
+            case Default:
+                setSnackbarColor(snackbar, Color.WHITE,black);
                 break;
         }
     }

@@ -20,7 +20,7 @@ import java.util.List;
 
 
 /**
- * Created by Administrator on 2016/2/19.
+ * Created by itlwy on 2016/2/19.
  */
 public abstract class BaseRCAdapter<T> extends RecyclerView.Adapter<BaseRCHolder> {
 

@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
- * Created by Administrator on 2016/2/19.
+ * Created by itlwy on 2016/2/19.
  */
 public class AutoRecyclerView extends RecyclerView{
     private onLoadMoreListener loadMoreListener;    //加载更多回调
