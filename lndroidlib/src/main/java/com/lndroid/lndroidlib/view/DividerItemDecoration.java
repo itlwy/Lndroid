@@ -14,6 +14,10 @@ import android.view.View;
  * Created by Administrator on 2016/1/13.
  */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
+    public static final int HORIZONTAL_LIST = LinearLayoutManager.HORIZONTAL;
+
+    public static final int VERTICAL_LIST = LinearLayoutManager.VERTICAL;
+
     /*
     * RecyclerView的布局方向，默认先赋值
     * 为纵向布局
